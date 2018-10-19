@@ -4,7 +4,8 @@ AM_LDFLAGS =
 
 lib_LTLIBRARIES = libdatabuf.la
 
-libdatabuf_la_SOURCES = internals.h endianness.c databuf.c write.c read.c seek.c
+include_HEADERS = databuf.h
+libdatabuf_la_SOURCES = databuf.h internals.h endianness.c databuf.c write.c read.c seek.c
 
 check_PROGRAMS = test-endianness test-databuf test-write test-read test-seek
 
