@@ -1,0 +1,11 @@
+Databuf is a small C library for data serialization.
+
+Using databuf it is possible to serialize data using the databuf_write*
+functions. The library takes care of the byte order.
+
+When we have finished writing we can get a pointer to the serialized
+data and use it for our purposes.
+
+In addition to writing, we can set up a data buffer and read it using
+the databuf_read* functions.
+
