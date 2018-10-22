@@ -1,4 +1,4 @@
-AM_CPPFLAGS = 
+AM_CPPFLAGS = -I$(top_srcdir)/src
 AM_CFLAGS =
 AM_LDFLAGS =
 
