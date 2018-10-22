@@ -82,6 +82,8 @@ int databuf_get_data(databuf_t *self, void **rdata, size_t *rsize)
 
   memcpy(*rdata, self->data, self->end);
 
+  *rsize = self->end;
+
   return 0;
 }
 
