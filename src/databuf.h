@@ -21,8 +21,6 @@
 #ifndef DATABUF_H_INCLUDED
 #define DATABUF_H_INCLUDED
 
-#include "internals.h"
-
 #include <stdint.h>
 #include <stdlib.h>
 #include <unistd.h>
