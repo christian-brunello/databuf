@@ -87,7 +87,7 @@ int databuf_get_data(databuf_t *self, void **rdata, size_t *rsize)
   return 0;
 }
 
-int databuf_set_data(databuf_t *self, void *data, size_t size)
+int databuf_set_data(databuf_t *self, const void *data, size_t size)
 {
   void *p;
 
@@ -106,3 +106,39 @@ int databuf_set_data(databuf_t *self, void *data, size_t size)
 
   return 0;
 }
+
+ssize_t databuf_get_data_fd(databuf_t *self, int fd)
+{
+  return write(fd, self->data, self->end);
+}
+
+ssize_t databuf_set_data_fd(databuf_t *self, int fd, size_t size)
+{
+  void *p;
+  ssize_t r;
+
+  if((p = malloc(size)) == NULL)
+    return errno;
+
+  if((r = read(fd, p, size)) < 0)
+  {
+    int err = errno;
+
+    free(p);
+
+    return err;
+  }
+
+  if(self->data)
+    free(self->data);
+
+  self->data = p;
+  self->size = size;
+  self->end = r;
+  self->off = 0;
+
+  return r;
+}
+
+
+

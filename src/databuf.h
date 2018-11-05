@@ -42,7 +42,10 @@ void databuf_delete(databuf_t *self);
 int databuf_seek(databuf_t *self, off_t off, int whence);
 
 int databuf_get_data(databuf_t *self, void **rdata, size_t *rsize);
-int databuf_set_data(databuf_t *self, void *data, size_t size);
+int databuf_set_data(databuf_t *self, const void *data, size_t size);
+
+ssize_t databuf_get_data_fd(databuf_t *self, int fd);
+ssize_t databuf_set_data_fd(databuf_t *self, int fd, size_t size);
 
 int databuf_write(databuf_t *self, void *buf, size_t size);
 int databuf_write_array(databuf_t *self, void *buf, size_t size, size_t count);
